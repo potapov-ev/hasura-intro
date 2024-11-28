@@ -1,6 +1,6 @@
 <img width="297" alt="image" src="https://github.com/user-attachments/assets/b804f4c8-34b2-424f-984a-63c378906d12">### Степпер
 Удалить xsl и стили  
-https://github.com/hhru/xhh/blob/4161a22b6160de84afb658529e0b6df89472c0a2/xhh/xsl/content/employer/invoice/purchase.xsl#L27
+https://github.com/hhru/xhh/blob/4161a22b6160de84afb658529e0b6df89472c0a2/xhh/xsl/content/employer/invoice/purchase.xsl#L27  
 
 Новый компонент на основе прогресс бара  
 https://magritte-ds.ru/?path=/docs/components-progressbar--docs

@@ -1,3 +1,6 @@
+# Оформления
+## Ресеч
+
 ### Степпер
 Удалить xsl и стили  
 https://github.com/hhru/xhh/blob/4161a22b6160de84afb658529e0b6df89472c0a2/xhh/xsl/content/employer/invoice/purchase.xsl#L27  
@@ -20,6 +23,7 @@ https://magritte-ds.ru/?path=/docs/components-progressbar--docs
 Редизайн таблицы, текстовки для продуктов не меняем
 
 #### Цена изменится 
+Ручка `/rs/api/cart/employer/{employerId/cart/{cartId}/activation/info`
 Если в acticaionInfo хотя бы для одного из сервисов пришли `bestPriceBefore` и `bestPriceBeforeNextDate` показываем такие баннеры  
 <img width="567" alt="image" src="https://github.com/user-attachments/assets/cc870bae-0a80-462e-89aa-b498e74848b3">  
 <img width="766" alt="image" src="https://github.com/user-attachments/assets/a3f1b637-1b41-460d-8bdd-a4e420f9a5ec">
@@ -34,7 +38,7 @@ https://github.com/hhru/xhh/blob/8f22dbad0fa5922e498285b035cebc126f8963f3/src/co
 <img width="104" alt="image" src="https://github.com/user-attachments/assets/64575d5c-590d-4d04-a156-a678f8419389">  
 
 #### Продукт перестанет существовать 
-
+Нужно добавить поля по аналогии `bestPriceBefore` и `bestPriceBeforeNextDate` в ActicationInfo
 Другие текстовки в баннере
 <img width="685" alt="image" src="https://github.com/user-attachments/assets/f39c0735-7f7a-4cd8-b968-4ce3a24ccc6d">  
 <img width="690" alt="image" src="https://github.com/user-attachments/assets/a74bc237-6107-4659-a269-4d7062343510">  
@@ -48,12 +52,29 @@ https://github.com/hhru/xhh/blob/8f22dbad0fa5922e498285b035cebc126f8963f3/src/co
 #### Смешанный кейс
 Меняем тексты в баннерах, остальное по флоу выше  
 <img width="513" alt="image" src="https://github.com/user-attachments/assets/4da77fb2-d336-4eb2-957e-5cbad79ed106">
- 
-
-
-
 
 
 ### Блокеры
-Не готова таблица в магрите  
+- Не готова таблица в магрите  
 Катя Осипова сказала, что ориентировочно будет готов в начале-середине декабря
+- Умеет ли биллинг отдавать дату окончания продукта
+
+## Декомпозиция Оформления
+
+### [xhh] Добавить нотификации - S
+- Добавляем баннеры возле таблицы и под плательщиком для кейсов: цена изменится, продукт перестанет существовать, смешанный кейс
+- Для сервиса, по которому изменится цена, если юзер выбрал дату активации после повышения цены - возле цены пишем "Будет дешевле при активации до"
+- Для сервиса, который перестанет существовать - под активацией пишем "Есть ограничения" с тултипом
+
+### [hh.ru] Добавить даты окончания действия сервиса в ActivationInfo
+Ручка `/rs/api/cart/employer/{employerId/cart/{cartId}/activation/info` помимо `bestPriceBefore` и `bestPriceBeforeNextDate` должна отдавать отдельно даты окончания действия продукта
+
+### [xhh] Показывать Alert, если дата активации позже даты изменения цены - S
+- Заменить UncontrolledDatePicker на DatePicker
+- Добавить логику показа Alert
+
+### [xhh] Редизайн на магрит - M
+- Степпер
+- Чекбок с активацией заменяем на CheckableCard
+- Таблица
+
